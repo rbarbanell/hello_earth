@@ -1,0 +1,48 @@
+---
+title: "Who am I"
+image: profile.jpg
+about:
+  id: boss-heading
+  template: trestles
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: /in/rebeccabarbanell/
+    - icon: github
+      text: Github
+      href: https://github.com/rbarbanell
+---
+
+::: {#boss-heading}
+Becca Barbanell gives a creative insight of Data Science. When not cultivating innovation on data structures, Becca enjoys spending time with her dog theta squared and partner exploring nature, making food, having fun, and playing music.
+
+## Education
+
+Willamette University, Portland \| Portland, OR Masters in Data Science \| August 2021 - August 2023
+
+Willamette University, Salem \| Salem, OR B.S in Data Science \| August 2021 - May 2023
+
+Seattle Central College, Seattle \| Seattle, WA \|A.S Associate in Science Transfer\| March 2020
+
+## Experience
+
+**Ness of Brodgar with Willamette University \| Data engineer intern \|Orkney Island, Scotland \| July 2022 - present**
+
+-   Generated geo-chemical data of the major and minor trace elements of soil samples of various date ranges in collaboration with an archaeological dig.
+-   Tracked and managed results data for 200 + soil samples.
+-   Implemented python program to discover inconsistencies and ensure clean and accurate data.
+-   Streamlined data collection and storage by creating a system of naming and compiling information for easier accessibility and data analysis.
+
+**Seattle Central College \| Mathematics Tutor \| Seattle, WA October 2019 - August 2021**
+
+-   Specialize as an individual tutor, simplify math concepts, and coach students to think critically to solve problems.
+-   Improve tutee comprehension and increased competence while fostering confidence for success. Maintained a 98% tutee satisfaction rating.\
+-   Cultivate a fun and interesting learning environment which encourages questions and discussion.
+
+## Leadership + Volunteering
+
+**President of WiSE Club \| Women in Science and Engineering \| Seattle Central College February 2019 -- March 2020**
+
+-   Coordinated fifteen professional engineers and three Seattle Central alumni and 30 volunteers and a student audience of 165+ for Engineering Mentor Night.
+-   Planned, created, and implemented highly effective club plans and agendas while informing club members.
+:::
