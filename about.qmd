@@ -14,7 +14,7 @@ about:
 ---
 
 ::: {#boss-heading}
-Becca Barbanell gives a creative insight of Data Science. When not cultivating innovation on data structures, Becca enjoys spending time with her dog theta squared and partner exploring nature, making food, having fun, and playing music.
+Becca Barbanell gives a creative insight into Data Science. When not cultivating innovation on data structures, Becca enjoys spending time with her dog theta squared and partner exploring nature, making food, having fun, and playing music.
 
 ## Education
 
