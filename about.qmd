@@ -7,14 +7,14 @@ about:
   links:
     - icon: linkedin
       text: LinkedIn
-      href: /in/rebeccabarbanell/
+      href: https://www.linkedin.com/in/rebeccabarbanell/
     - icon: github
       text: Github
       href: https://github.com/rbarbanell
 ---
 
 ::: {#boss-heading}
-Becca Barbanell gives a creative insight into Data Science. When not cultivating innovation on data structures, Becca enjoys spending time with her dog theta squared and partner exploring nature, making food, having fun, and playing music.
+Becca Barbanell gives creative insight into Data Science and approaches it holistically.  When not investigating and implementing innovational data structures, Becca enjoys spending time with her dog theta squared and partner exploring nature, making food, having fun, and playing music.
 
 ## Education
 
