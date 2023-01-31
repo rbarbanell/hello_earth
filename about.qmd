@@ -7,7 +7,7 @@ about:
   links:
     - icon: linkedin
       text: LinkedIn
-      href: https://www.linkedin.com/in/rebeccabarbanell/
+      href: https://www.linkedin.com/in/rebeccabarbanell
     - icon: github
       text: Github
       href: https://github.com/rbarbanell
