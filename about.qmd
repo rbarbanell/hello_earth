@@ -7,14 +7,14 @@ about:
   links:
     - icon: linkedin
       text: LinkedIn
-      href: https://www.linkedin.com/in/rebeccabarbanell/
+      href: https://www.linkedin.com/in/rebeccabarbanell
     - icon: github
       text: Github
       href: https://github.com/rbarbanell
 ---
 
 ::: {#boss-heading}
-Becca Barbanell gives creative insight into Data Science and approaches it holistically.  When not investigating and implementing innovational data structures, Becca enjoys spending time with her dog theta squared and partner exploring nature, making food, having fun, and playing music.
+Becca Barbanell gives creative insight into data science and approaches it holistically.  When not investigating and implementing innovational data structures, Becca enjoys spending time with her dog theta squared and partner exploring nature, making food, having fun, and playing music.
 
 ## Education
 
@@ -26,7 +26,7 @@ Seattle Central College, Seattle \| Seattle, WA \|A.S Associate in Science Trans
 
 ## Experience
 
-**Ness of Brodgar with Willamette University \| Data engineer intern \|Orkney Island, Scotland \| July 2022 - present**
+**Ness of Brodgar with Willamette University \| Data Engineer Intern \|Orkney Island, Scotland \| July 2022 - present**
 
 -   Generated geo-chemical data of the major and minor trace elements of soil samples of various date ranges in collaboration with an archaeological dig.
 -   Tracked and managed results data for 200 + soil samples.
