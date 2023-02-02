@@ -3,12 +3,19 @@ project:
   output-dir: docs
 
 website:
+  reader-mode: true
   title: "Inquiring Minds Want to Know"
   navbar:
+    background: dark
+    search: true
     right:
       - about.qmd
       - icon: github
         href: https://github.com//rbarbanell
+ 
+        
+    
+      
    
 format:
   html:
