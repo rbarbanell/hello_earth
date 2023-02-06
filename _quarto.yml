@@ -3,6 +3,11 @@ project:
   output-dir: docs
 
 website:
+  comments: 
+    utterances: 
+      repo: quarto-dev/quarto-web
+      theme: icy-dark
+      issue-term: title
   reader-mode: true
   title: "Inquiring Minds Want to Know"
   navbar:
