@@ -3,6 +3,11 @@ title: "Introduction"
 author: "Becca Barbanell"
 date: "2023-01-30"
 categories: [news]
+comments: 
+    utterances: 
+      repo: quarto-dev/quarto-web
+      theme: icy-dark
+      issue-term: title
 ---
 
 Here is my first blog post
