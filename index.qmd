@@ -11,7 +11,7 @@ listing:
   sort-ui: false
   filter-ui: true
 page-layout: full
-title-block-banner: false
+title-block-banner: true
 ---
 
 
