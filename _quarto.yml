@@ -26,6 +26,12 @@ format:
   html:
     theme: vapor
     css: styles.css
+    code-fold: true
+    code-summary: "Here is the code"
+  header-includes: |
+      <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/tex-gyre-adventor" type="text/css"/>
+  link-citations: yes
+  mainfont: TeXGyreAdventorRegular
 
 
 
