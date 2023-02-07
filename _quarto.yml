@@ -6,7 +6,7 @@ website:
   comments: 
     utterances: 
       repo: quarto-dev/quarto-web
-      theme: icy-dark
+      theme: dark-blue
       issue-term: title
   reader-mode: true
   title: "Inquiring Minds Want to Know"

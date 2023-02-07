@@ -1,15 +1,15 @@
 ---
-title: "Introduction"
-author: "Becca Barbanell"
+title: "The Quest for the GOAT"
+author: "Becca Barbanell & Jennifer Rana"
 date: "2023-01-30"
-categories: [news]
+categories: [RShiny, Sports]
 comments: 
     utterances: 
       repo: quarto-dev/quarto-web
-      theme: icy-dark
+      theme: dark-blue
       issue-term: title
 ---
 
-Here is my first blog post
+ 
 
 
