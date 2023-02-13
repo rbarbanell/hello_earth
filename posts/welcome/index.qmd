@@ -280,16 +280,25 @@ index_goat <- rbind(mj_regnum, mj_playnum,kb_regnum,kb_playnum,lj_regnum,lj_play
 
 
 index_goat %>%
-  select(num_year,player,gametype,age,team,overallbpm,year)%>%
+  select(num_year,age,gametype,team,overallbpm,year)%>%
   filter( gametype == "Regular Season")%>%
+  select(-gametype)%>%
   kbl(booktabs = TRUE, caption = "Regular Season for Players", full_width = F)%>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+  kable_styling(latex_options = "striped")%>%
+  pack_rows("Michael Jordan", 1, 14) %>%
+  pack_rows("Kobe Bryant", 16, 36)%>%
+  pack_rows("Lebron James", 36,51)
+  
 
 
 
 index_goat %>%
-  select(num_year,player,gametype,age,team,overallbpm,year)%>%
+  select(num_year,age,gametype,team,overallbpm,year)%>%
   filter( gametype == "Playoffs")%>%
+  select(-gametype)%>%
   kbl(booktabs = TRUE, caption = "Playoffs for Players", full_width = F)%>%
-  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+  kable_styling(latex_options = "scale_down")%>%
+  pack_rows("Michael Jordan", 1, 13) %>%
+  pack_rows("Kobe Bryant", 14, 28)%>%
+  pack_rows("Lebron James", 29,41)
 ```
