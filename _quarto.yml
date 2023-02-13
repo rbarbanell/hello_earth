@@ -3,10 +3,11 @@ project:
   output-dir: docs
 
 website:
+
   comments: 
     utterances: 
       repo: quarto-dev/quarto-web
-      theme: dark-blue
+      theme: gruvbox-dark
       issue-term: title
   reader-mode: true
   title: "Inquiring Minds Want to Know"
@@ -24,14 +25,11 @@ website:
    
 format:
   html:
-    theme: vapor
+    theme: sandstone
+    mainfont: courier new 
     css: styles.css
     code-fold: true
     code-summary: "Here is the code"
-  header-includes: |
-      <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/tex-gyre-adventor" type="text/css"/>
-  link-citations: yes
-  mainfont: TeXGyreAdventorRegular
 
 
 
