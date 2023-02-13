@@ -3,7 +3,6 @@ project:
   output-dir: docs
 
 website:
-
   comments: 
     utterances: 
       repo: quarto-dev/quarto-web
@@ -18,6 +17,10 @@ website:
       - about.qmd
       - icon: github
         href: https://github.com//rbarbanell
+      - icon: ballon-heart
+        file: dangsdesign.qmd
+      
+      
  
         
     
@@ -30,6 +33,7 @@ format:
     css: styles.css
     code-fold: true
     code-summary: "Here is the code"
+
 
 
 

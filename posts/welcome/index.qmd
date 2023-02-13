@@ -93,6 +93,8 @@ library(tidyverse)
 library(lubridate)
 #install.packages("kableExtra")
 library(kableExtra)
+library(htmlwidgets)
+library(DT)
 
 fullnba<-read_csv('Seasons_Stats.csv')
 goat<-read_csv('finalstats.csv')
@@ -256,7 +258,6 @@ playmj<-filter(goat, player == "Michael Jordan" , gametype == "Playoffs")
 
 mj_playnum <- tibble::rowid_to_column(playmj,"num_year")
 
-
 regkb<-filter(goat, player == "Kobe Bryant" , gametype == "Regular Season")
 
 kb_regnum <- tibble::rowid_to_column(regkb,"num_year")
@@ -277,28 +278,5 @@ lj_playnum <- tibble::rowid_to_column(playlj,"num_year")
 
 index_goat <- rbind(mj_regnum, mj_playnum,kb_regnum,kb_playnum,lj_regnum,lj_playnum)
 
-
-
-index_goat %>%
-  select(num_year,age,gametype,team,overallbpm,year)%>%
-  filter( gametype == "Regular Season")%>%
-  select(-gametype)%>%
-  kbl(booktabs = TRUE, caption = "Regular Season for Players", full_width = F)%>%
-  kable_styling(latex_options = "striped")%>%
-  pack_rows("Michael Jordan", 1, 14) %>%
-  pack_rows("Kobe Bryant", 16, 36)%>%
-  pack_rows("Lebron James", 36,51)
-  
-
-
-
-index_goat %>%
-  select(num_year,age,gametype,team,overallbpm,year)%>%
-  filter( gametype == "Playoffs")%>%
-  select(-gametype)%>%
-  kbl(booktabs = TRUE, caption = "Playoffs for Players", full_width = F)%>%
-  kable_styling(latex_options = "scale_down")%>%
-  pack_rows("Michael Jordan", 1, 13) %>%
-  pack_rows("Kobe Bryant", 14, 28)%>%
-  pack_rows("Lebron James", 29,41)
 ```
+
