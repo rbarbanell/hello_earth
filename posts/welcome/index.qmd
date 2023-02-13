@@ -91,6 +91,9 @@ How do they stack up against their teammates each season?
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
 library(lubridate)
+#install.packages("kableExtra")
+library(kableExtra)
+
 fullnba<-read_csv('Seasons_Stats.csv')
 goat<-read_csv('finalstats.csv')
 #remove all * from the Player column
@@ -212,7 +215,7 @@ plot(kb)
 plot(lj)
 ```
 
-
+## BPM: Individual Player {background-color="rgba(223,187,133,.6)"}
 ```{r} 
 team_colors <- c("#CE1141", "#FDB927", "#6f263d")
 
@@ -235,9 +238,58 @@ allgroup<-goat %>%
 
 ```
 
+
+
 ```{r}
 plot(allgroup)
 ```
 
 
-=
+```{r}
+
+
+regmj <- filter(goat, player == "Michael Jordan" , gametype == "Regular Season")
+
+mj_regnum <- tibble::rowid_to_column(regmj,"num_year")
+
+playmj<-filter(goat, player == "Michael Jordan" , gametype == "Playoffs")
+
+mj_playnum <- tibble::rowid_to_column(playmj,"num_year")
+
+
+regkb<-filter(goat, player == "Kobe Bryant" , gametype == "Regular Season")
+
+kb_regnum <- tibble::rowid_to_column(regkb,"num_year")
+
+playkb <- filter(goat, player == "Kobe Bryant" , gametype == "Playoffs")
+
+kb_playnum <- tibble::rowid_to_column(playkb,"num_year")
+
+
+reglj<-filter(goat, player == "Lebron James", gametype == "Regular Season")
+
+
+lj_regnum <- tibble::rowid_to_column(reglj,"num_year")
+
+playlj<-filter(goat, player == "Lebron James", gametype == "Playoffs")
+
+lj_playnum <- tibble::rowid_to_column(playlj,"num_year")
+
+index_goat <- rbind(mj_regnum, mj_playnum,kb_regnum,kb_playnum,lj_regnum,lj_playnum)
+
+
+
+index_goat %>%
+  select(num_year,player,gametype,age,team,overallbpm,year)%>%
+  filter( gametype == "Regular Season")%>%
+  kbl(booktabs = TRUE, caption = "Regular Season for Players", full_width = F)%>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+
+
+
+index_goat %>%
+  select(num_year,player,gametype,age,team,overallbpm,year)%>%
+  filter( gametype == "Playoffs")%>%
+  kbl(booktabs = TRUE, caption = "Playoffs for Players", full_width = F)%>%
+  kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+```
