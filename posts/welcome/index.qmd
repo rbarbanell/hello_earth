@@ -105,11 +105,7 @@ goat$season<-as.Date(goat$season, format="%Y")
 goat$year<-year(goat$season)
 ```
 
-
-
-
-
-```{r} 
+```{r}
 #define custom colors
 bullsred = "#CE1141"
 lakeryellow = "#FDB927"
@@ -210,6 +206,7 @@ lj<-fullnba %>%
       team when that player is on the court.")
     
 ```
+
 ```{r}
 #Show plots
 plot(mj)
@@ -218,7 +215,8 @@ plot(lj)
 ```
 
 ## BPM: Individual Player {background-color="rgba(223,187,133,.6)"}
-```{r} 
+
+```{r}
 team_colors <- c("#CE1141", "#FDB927", "#6f263d")
 
 allgroup<-goat %>%
@@ -240,12 +238,9 @@ allgroup<-goat %>%
 
 ```
 
-
-
 ```{r}
 plot(allgroup)
 ```
-
 
 ```{r}
 
@@ -280,3 +275,23 @@ index_goat <- rbind(mj_regnum, mj_playnum,kb_regnum,kb_playnum,lj_regnum,lj_play
 
 ```
 
+```{r}
+tabgoat <- index_goat %>%
+  select(player,gametype,overallbpm,year)
+library(DT)
+
+```
+
+::: {.panel-tabset}
+```{r}
+#| results: asis
+
+htmltools::tagList(datatable(tabgoat))
+
+for(i in c("Michael Jordan","Kobe Bryant", "Lebron James")){
+  cat(sprintf("\n### player: %s\n\n", i))
+  print(htmltools::tagList(datatable(tabgoat %>% filter(player == i))))
+}
+
+```
+:::

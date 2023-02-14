@@ -7,8 +7,6 @@ website:
     utterances: 
       repo: quarto-dev/quarto-web
       theme: gruvbox-dark
-      issue-term: title
-  reader-mode: true
   title: "Inquiring Minds Want to Know"
   navbar:
     background: dark

@@ -1,0 +1,10 @@
+---
+title: "Seattle Police Department (SPD) Crime Data: 2008-Present"
+description: "Has crime chaged throughout time or what is being reported is?"
+author: "Rebecca Barbanell"
+date: "2/13/23"
+categories:
+  - news
+  - code
+  - analysis
+---
