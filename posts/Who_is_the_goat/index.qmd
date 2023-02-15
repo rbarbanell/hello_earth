@@ -95,6 +95,8 @@ library(lubridate)
 library(kableExtra)
 library(htmlwidgets)
 library(DT)
+library(plotly)
+library(ggplot2)
 
 fullnba<-read_csv('Seasons_Stats.csv')
 goat<-read_csv('finalstats.csv')
@@ -105,109 +107,133 @@ goat$season<-as.Date(goat$season, format="%Y")
 goat$year<-year(goat$season)
 ```
 
-```{r}
+```{r, error=FALSE}
 #define custom colors
 bullsred = "#CE1141"
 lakeryellow = "#FDB927"
+lakerpurple = "#552583"
 cavswine = "#6f263d"
+cavsgold = "#ffb81c"
+miamigold = "#F9A01B"
+miamired = "#98002E"
 
 #filter dataset for specific players
-justmj<-filter(goat, player == "Michael Jordan")
-justkb<-filter(goat, player == "Kobe Bryant")
-justlj<-filter(goat, player == "Lebron James")
+justmj<-filter(goat, player == "Michael Jordan")%>%
+  group_by(year) %>%
+  summarise(mean = mean(overallbpm, na.rm=TRUE))
+justkb<-filter(goat, player == "Kobe Bryant")%>%
+  group_by(year) %>%
+  summarise(mean = mean(overallbpm, na.rm=TRUE))
+justlj<-filter(goat, player == "Lebron James", between(year, 2003, 2017))%>%
+  group_by(year) %>%
+  summarise(mean = mean(overallbpm, na.rm=TRUE))
 
-#find PER average for teams and players
-bullavg<-filter(fullnba, Player != "Michael Jordan", Tm == "CHI", between(Year, 1984, 2003)) %>% summarise(mean = mean(BPM, na.rm=TRUE))
-mjavg<-filter(goat, player == "Michael Jordan") %>% summarise(mean = mean(overallbpm, na.rm=TRUE))
-
-lakeravg<-filter(fullnba, Player != "Kobe Bryant", Tm == "LAL", between(Year, 1996, 2012)) %>% summarise(mean = mean(BPM, na.rm=TRUE))
-kbavg<-filter(goat, player == "Kobe Bryant") %>% summarise(mean = mean(overallbpm, na.rm=TRUE))
-
-cavavg<-filter(fullnba, Player != "LeBron James", Tm == "CLE", between(Year, 2003, 2017)) %>% summarise(mean = mean(BPM, na.rm=TRUE))
-ljavg<-filter(goat, player == "Lebron James") %>% summarise(mean = mean(overallbpm, na.rm=TRUE))
-
-
-#need to calculate league averages for correct years and add those lines back in
-#need to adjust y axis ranges so they are the same across all three
-
+wizbpm<-filter(fullnba, Player != "Michael Jordan", Tm == "WAS", between(Year, 2001, 2002))
+cavbpm<-filter(fullnba, Player != "LeBron James", Tm == "CLE", between(Year, 2003, 2009)) 
+miabpm<-filter(fullnba, Player != "LeBron James", Tm == "MIA", between(Year, 2010, 2013))
+cav2bpm<-filter(fullnba, Player != "LeBron James", Tm == "CLE", between(Year, 2014, 2017))
+lakbpm<-filter(fullnba, Player != "LeBron James", Tm == "LAL", between(Year, 2017, 2018))
 
 #plots
 #Michael Jordan
 mj<-fullnba %>%
-  filter(Player != "Michael Jordan", Tm == "CHI", between(Year, 1983, 2004)) %>%
+  filter(Player != "Michael Jordan", Tm == "CHI", between(Year, 1983, 2000)) %>%
   ggplot(aes(x=Year, y=BPM, fill="black"))+
     geom_point(alpha=.2, size=2)+
-    geom_point(data=justmj, aes(x=year, y=overallbpm, color=bullsred), size=2)+
+    geom_point(data=wizbpm, aes(x=Year, y=BPM), alpha=.2, size=2, fill="black")+
+    geom_point(data=justmj, aes(x=year, y=mean, color=bullsred), size=3)+
     scale_colour_manual(values = bullsred)+
-    #plot league average of ?
-    #geom_hline(yintercept = 15, linetype="dotted")+
-    #plot team average of -2.65
-    geom_hline(yintercept = -2.65, linetype="dashed")+
-    #plot player average of 11.6
-    geom_hline(yintercept = 8.65, linetype="solid")+
-    theme_bw()+
+    scale_x_continuous(breaks=seq(1983, 2002, 1))+
+    geom_hline(yintercept = 0, alpha=.1, size=2, linetype="solid")+
+    geom_vline(xintercept = 1993, alpha=.05, size=8, linetype="solid")+
+    geom_vline(xintercept = 1999, alpha=.05, size=40, linetype="solid")+
+    geom_point(aes(x=1990, y=12.3),color='black', fill=bullsred, size=3, shape=21)+
+    geom_point(aes(x=1991, y=9.1),color='black', fill=bullsred, size=3, shape=21)+
+    geom_point(aes(x=1992, y=10.2),color='black', fill=bullsred, size=3, shape=21)+
+    geom_point(aes(x=1995, y=8.35),color='black', fill=bullsred, size=3, shape=21)+
+    geom_point(aes(x=1996, y=7.7),color='black', fill=bullsred, size=3, shape=21)+
+    geom_point(aes(x=1997, y=5.4),color='black', fill=bullsred, size=3, shape=21)+
+    annotate("text", x = 1993, y = 15, label = "RETIRED", family="sans", size=3)+
+    annotate("text", x = 1999, y = 15, label = "RETIRED", family="sans", size=3)+
+    theme_minimal()+
     theme(
-      legend.position="none"
+      legend.position="none",
+      panel.grid.minor = element_blank(),
+      panel.grid.major = element_blank(),
+    axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+    axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
+    plot.title = element_text(margin = margin(t = 0, r = 0, b = 20, l = 0))
       )+
     labs(
-      title="Box Plus/Minus (BPM): Michael Jordan v. Bulls",
-      caption="Box Plus/Minus (BPM) is a basketball box score-based 
-      metric that estimates a basketball player's contribution to the
-      team when that player is on the court."
+      title="Michael Jordan v. Bulls (1983-2000) & Wizards (2001-2002)",
+      y="BPM",
+      x="Season (Starting Year)"
     )
-
 
 #Kobe Bryant
 kb<-fullnba %>%
-  filter(PER > 0, Player != "Kobe Bryant", Tm == "LAL", between(Year, 1996, 2012)) %>%
+  filter(Player != "Kobe Bryant", Tm == "LAL", between(Year, 1996, 2015)) %>%
   ggplot(aes(x=Year, y=BPM, fill="black"))+
-    geom_jitter(alpha=.2, size=2)+
-    geom_jitter(data=justkb, aes(x=year, y=overallbpm, color=lakeryellow), size=2)+
+    geom_point(alpha=.2, size=2)+
+    geom_point(data=justkb, aes(x=year, y=mean, color=lakeryellow), size=3)+
     scale_colour_manual(values = lakeryellow)+
-    #plot league average of ?
-    #geom_hline(yintercept = 15, linetype="dotted")+
-    #plot team average of -1.58
-    geom_hline(yintercept = -1.58, linetype="dashed")+
-    #plot player average of 3.04
-    geom_hline(yintercept = 3.04, linetype="solid")+
-    theme_bw()+
+    scale_x_continuous(breaks=seq(1996, 2015, 1))+
+    geom_hline(yintercept = 0, alpha=.1, size=2, linetype="solid")+
+    geom_vline(xintercept = 2013, alpha=.05, size=8, linetype="solid")+
+    geom_point(aes(x=1999, y=4.3),color=lakerpurple, fill=lakeryellow, size=3, shape=21)+
+    geom_point(aes(x=2000, y=5.75),color=lakerpurple, fill=lakeryellow, size=3, shape=21)+
+    geom_point(aes(x=2001, y=3.85),color=lakerpurple, fill=lakeryellow, size=3, shape=21)+
+    geom_point(aes(x=2008, y=6),color=lakerpurple, fill=lakeryellow, size=3, shape=21)+
+    geom_point(aes(x=2009, y=4.75),color=lakerpurple, fill=lakeryellow, size=3, shape=21)+
+    annotate("text", x = 2013, y = 15, label = "INJURED", family="sans", size=3)+
+    theme_minimal()+
     theme(
-      legend.position="none"
+      legend.position="none",
+      panel.grid.minor = element_blank(),
+      panel.grid.major = element_blank(),
+    axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+    axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
+    plot.title = element_text(margin = margin(t = 0, r = 0, b = 20, l = 0))
       )+
     labs(
-      title="Box Plus/Minus (BPM): Kobe Bryant v. Lakers",
-      caption="Box Plus/Minus (BPM) is a basketball box score-based 
-      metric that estimates a basketball player's contribution to the 
-      team when that player is on the court."
+      title="Kobe v. Lakers (1996-2015)",
+      y="BPM",
+      x="Season (Starting Year)"
     )
 
 
 #LeBron James
-lj<-fullnba %>%
-  filter(PER > 0, Player != "LeBron James", Tm == "CLE", between(Year, 2003, 2017)) %>%
+lj<-cavbpm %>%
   ggplot(aes(x=Year, y=BPM, fill="black"))+
     geom_point(alpha=.2, size=2)+
-    geom_point(data=justlj, aes(x=year, y=overallbpm, color=cavswine), size=2)+
+    geom_point(data=cav2bpm, aes(x=Year, y=BPM), alpha=.2, size=2, fill="black")+
+    geom_point(data=miabpm, aes(x=Year, y=BPM), alpha=.2, size=2, fill="black")+
+    geom_point(data=lakbpm, aes(x=Year, y=BPM), alpha=.2, size=2, fill="black")+
+    geom_point(data=justlj, aes(x=year, y=mean, color=cavswine), size=3)+
     scale_colour_manual(values = cavswine)+
-    #plot league average of ?
-    #geom_hline(yintercept = 15, linetype="dotted")+
-    #plot team average of -3.32
-    geom_hline(yintercept = -3.32, linetype="dashed")+
-    #plot player average of 10.1
-    geom_hline(yintercept = 10.1, linetype="solid")+
-    theme_bw()+
+    scale_x_continuous(breaks=seq(2003, 2018, 1))+
+    geom_hline(yintercept = 0, alpha=.1, size=2, linetype="solid")+
+    geom_point(aes(x=2011, y=11),color=cavsgold, fill=cavswine, size=4, shape=21)+
+    geom_point(aes(x=2012, y=10.9),color=cavsgold, fill=cavswine, size=4, shape=21)+
+    geom_point(aes(x=2015, y=11.1),color=cavsgold, fill=cavswine, size=4, shape=21)+
+    theme_minimal()+
     theme(
-      legend.position="none"
+      legend.position="none",
+      panel.grid.minor = element_blank(),
+      panel.grid.major = element_blank(),
+    axis.title.y = element_text(margin = margin(t = 0, r = 20, b = 0, l = 0)),
+    axis.title.x = element_text(margin = margin(t = 20, r = 0, b = 0, l = 0)),
+    plot.title = element_text(margin = margin(t = 0, r = 0, b = 20, l = 0))
       )+
     labs(
-      title="Box Plus/Minus (BPM): LeBron James v. Caveliers",
-      caption="Box Plus/Minus (BPM) is a basketball box score-based 
-      metric that estimates a basketball player's contribution to the 
-      team when that player is on the court.")
+      title="LeBron v. Caveliers (2003-2009 & 2014-2017), Heat (2010-2013) & Lakers (2017)",
+      y="BPM",
+      x="Season (Starting Year)"
+    )
     
 ```
 
-```{r}
+```{r, message=FALSE}
 #Show plots
 plot(mj)
 plot(kb)
@@ -239,7 +265,7 @@ allgroup<-goat %>%
 ```
 
 ```{r}
-plot(allgroup)
+ggplotly(allgroup)
 ```
 
 ```{r}
@@ -273,6 +299,8 @@ lj_playnum <- tibble::rowid_to_column(playlj,"num_year")
 
 index_goat <- rbind(mj_regnum, mj_playnum,kb_regnum,kb_playnum,lj_regnum,lj_playnum)
 
+
+
 ```
 
 ```{r}
@@ -286,7 +314,7 @@ library(DT)
 ```{r}
 #| results: asis
 
-htmltools::tagList(datatable(tabgoat))
+htmltools::tagList(datatable(tabgoat), plot(tabgoat))
 
 for(i in c("Michael Jordan","Kobe Bryant", "Lebron James")){
   cat(sprintf("\n### player: %s\n\n", i))
