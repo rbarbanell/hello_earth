@@ -3,6 +3,7 @@ title: "The Quest for the GOAT"
 author: "Becca Barbanell & Jennifer Rana"
 date: "2023-01-30"
 categories: [RShiny, Sports]
+image: "three.jpg"
 comments: 
     utterances: 
       repo: quarto-dev/quarto-web
@@ -314,12 +315,59 @@ library(DT)
 ```{r}
 #| results: asis
 
-htmltools::tagList(datatable(tabgoat), plot(tabgoat))
+htmltools::tagList(datatable(tabgoat))
 
 for(i in c("Michael Jordan","Kobe Bryant", "Lebron James")){
   cat(sprintf("\n### player: %s\n\n", i))
   print(htmltools::tagList(datatable(tabgoat %>% filter(player == i))))
 }
+
+```
+```{r}
+
+player_playBMI<- index_goat %>% filter(gametype == "Playoffs")%>%
+  ggplot(aes(x=num_year, y=overallbpm, color = player))+
+    geom_line( alpha = .8)+
+    geom_point()+
+    scale_colour_manual(values = team_colors,
+                        breaks=c('Michael Jordan', 'Kobe Bryant', 'Lebron James'),
+                        labels=c('Michael Jordan', 'Kobe Bryant', 'LeBron James'))+
+    theme_bw()+
+    theme(
+      plot.caption=element_text(size=8,hjust = 0))+
+    scale_x_continuous(breaks = seq(0,24,2))+
+    labs(
+      title="Michael Jordan v. Kobe Bryant v. Lebron James",
+      subtitle="Box Plus/Minus (Playoffs BPM) - how do they compare?",
+      caption="Box Plus/Minus (Playoffs BPM) is a basketball box score-based metric that estimates a basketball player's contribution
+                to the team when that player is on the court for the playoffs.s.",
+      color="Player",
+      y="Playoffs BPM",
+      x="years played"
+    )
+
+player_regBMI<- index_goat %>% filter(gametype == "Regular Season")%>%
+  ggplot(aes(x=num_year, y=overallbpm, color = player))+
+    geom_line( alpha = .8)+
+    geom_point()+
+    scale_colour_manual(values = team_colors,
+                        breaks=c('Michael Jordan', 'Kobe Bryant', 'Lebron James'),
+                        labels=c('Michael Jordan', 'Kobe Bryant', 'LeBron James'))+
+    scale_x_continuous(breaks = seq(0,24,2))+
+    theme_bw()+
+    theme(
+      plot.caption=element_text(size=8,hjust = 0)
+    )+
+    labs(
+      title="Michael Jordan v. Kobe Bryant v. Lebron James",
+      subtitle="Box Plus/Minus (Regular Season BPM) - how do they compare?",
+      caption="Box Plus/Minus (Regular Season BPM) is a basketball box score-based metric that estimates a basketball player's contribution
+      to the team when that player is on the court for the Regular Season",
+      color="Player",
+      y="Regular Season BPM",
+      x="years played"
+    )
+ggplotly(player_playBMI)
 
 ```
 :::

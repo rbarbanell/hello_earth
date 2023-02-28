@@ -70,9 +70,9 @@ ul.task-list li input[type="checkbox"] {
     }
 
     const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
+      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
       
-      searchColumns: ["listing-title","listing-author","listing-date","listing-description","listing-categories"],
+      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
     };
 
     window['quarto-listings'] = window['quarto-listings'] || {};
@@ -138,7 +138,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(2)</span></div><div class="category" data-category="RShiny">RShiny <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Sports">Sports <span class="quarto-category-count">(1)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="Archeology">Archeology <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Database">Database <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Neoglithic">Neoglithic <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RShiny">RShiny <span class="quarto-category-count">(2)</span></div><div class="category" data-category="Scotland">Scotland <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Sports">Sports <span class="quarto-category-count">(1)</span></div><div class="category" data-category="analysis">analysis <span class="quarto-category-count">(1)</span></div><div class="category" data-category="code">code <span class="quarto-category-count">(1)</span></div><div class="category" data-category="news">news <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
@@ -171,9 +171,76 @@ ul.task-list li input[type="checkbox"] {
     </div>
 </div>
 <div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="news,code,analysis" data-listing-date-sort="1676275200000" data-listing-file-modified-sort="1676342446450" data-listing-reading-time-sort="0.005">
+<div class="g-col-1" data-index="0" data-listing-file-modified-sort="1677554335343" data-listing-reading-time-sort="0.75">
+<a href="./posts/NOB/presentation.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-img-bg" style="height: 150px;">
+&nbsp;
+</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Who am I
+</h5>
+<div class="card-text listing-description">
+
+</div>
+<div class="card-attribution card-text-small start">
+<div class="listing-author">
+Rebecca Barbanell
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="1" data-categories="RShiny,Archeology,Database,Scotland,Neoglithic" data-listing-date-sort="1677484800000" data-listing-file-modified-sort="1677554363346" data-listing-reading-time-sort="0.005">
+<a href="./posts/NOB/index.html" class="quarto-grid-link">
+<div class="quarto-grid-item card h-100 card-left">
+<div class="card-img-bg" style="height: 150px;">
+&nbsp;
+</div>
+<div class="card-body post-contents">
+<h5 class="no-anchor card-title listing-title">
+Ness of Brodgar a Neoglithic Archeology Site in Orkney Scotland
+</h5>
+<div class="listing-categories">
+<div class="listing-category" onclick="window.quartoListingCategory('RShiny'); return false;">
+RShiny
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Archeology'); return false;">
+Archeology
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Database'); return false;">
+Database
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Scotland'); return false;">
+Scotland
+</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Neoglithic'); return false;">
+Neoglithic
+</div>
+</div>
+<div class="card-text listing-description">
+
+</div>
+<div class="card-attribution card-text-small justify">
+<div class="listing-author">
+Becca Barbanell
+</div>
+<div class="listing-date">
+Feb 27, 2023
+</div>
+</div>
+</div>
+</div>
+</a>
+</div>
+<div class="g-col-1" data-index="2" data-categories="news,code,analysis" data-listing-date-sort="1676275200000" data-listing-file-modified-sort="1676342446450" data-listing-reading-time-sort="0.005">
 <a href="./posts/SPD/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<div class="card-img-bg" style="height: 150px;">
+&nbsp;
+</div>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 Seattle Police Department (SPD) Crime Data: 2008-Present
@@ -204,9 +271,12 @@ Feb 13, 2023
 </div>
 </a>
 </div>
-<div class="g-col-1" data-index="1" data-categories="RShiny,Sports" data-listing-date-sort="1675065600000" data-listing-file-modified-sort="1676501969951" data-listing-reading-time-sort="7.5">
+<div class="g-col-1" data-index="3" data-categories="RShiny,Sports" data-listing-date-sort="1675065600000" data-listing-file-modified-sort="1677554487790" data-listing-reading-time-sort="9.61">
 <a href="./posts/Who_is_the_goat/index.html" class="quarto-grid-link">
 <div class="quarto-grid-item card h-100 card-left">
+<p class="card-img-top">
+<img src="./posts/Who_is_the_goat/three.jpg" class="thumbnail-image card-img" style="height: 150px;">
+</p>
 <div class="card-body post-contents">
 <h5 class="no-anchor card-title listing-title">
 The Quest for the GOAT
