@@ -1,6 +1,6 @@
 ---
 title: "Who am I"
-image: profile.jpg
+image: pic.JPG
 about:
   id: boss-heading
   template: trestles
