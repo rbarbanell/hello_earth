@@ -4,6 +4,7 @@ title: "Ness of Brodgar a Neoglithic Archeology Site in Orkney Scotland"
 author: "Becca Barbanell "
 date: "2023-02-27"
 categories: [RShiny, Archeology, Database, Scotland, Neoglithic]
+image: "19aa.jpg"
 comments: 
     utterances: 
       repo: quarto-dev/quarto-web
