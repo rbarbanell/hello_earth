@@ -13,7 +13,7 @@ comments:
       
 ---
 
-:::
+
 
 ![Professor Scott Pike, Soil collection of Hearth Structure 8, fig.1](17a.jpg)
 
@@ -21,4 +21,3 @@ comments:
 
 ![Professor Scott Pike,Soil Soil collection of Hearth Structure 8, fig. 2](19aa.jpg)
 
-:::
