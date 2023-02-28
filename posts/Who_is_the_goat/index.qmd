@@ -235,6 +235,7 @@ lj<-cavbpm %>%
 ```
 
 ```{r, message=FALSE}
+#| layout: [[45,-10, 45]]
 #Show plots
 plot(mj)
 plot(kb)
