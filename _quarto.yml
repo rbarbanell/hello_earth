@@ -13,8 +13,6 @@ website:
     search: true
     right:
       - about.qmd
-      - icon: ballon-heart
-        file: dangsdesign.qmd
       - icon: github
         href: https://github.com//rbarbanell
       - posts.qmd
