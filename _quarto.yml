@@ -17,6 +17,8 @@ website:
         file: dangsdesign.qmd
       - icon: github
         href: https://github.com//rbarbanell
+      - posts.qmd
+    
      
       
       
